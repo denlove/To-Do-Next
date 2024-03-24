@@ -1,3 +1,5 @@
+import TaskArea from '@/models/TaskArea'
+
 export default function HomePage() {
-    return <h1>Hello</h1>
+    return <TaskArea />
 }
