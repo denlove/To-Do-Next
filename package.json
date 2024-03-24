@@ -25,5 +25,8 @@
         "sass": "^1.72.0",
         "typescript": "^5",
         "typescript-plugin-css-modules": "^5.1.0"
+    },
+    "resolutions": {
+        "styled-components": "^6"
     }
 }
