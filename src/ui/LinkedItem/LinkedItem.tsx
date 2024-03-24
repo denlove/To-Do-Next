@@ -1,18 +1,10 @@
-import { IParamChildren } from '@/types/interfaces'
+import { INavbarItem } from '@/types/interfaces'
 import Link from 'next/link'
 
-interface ILinkedItem extends IParamChildren {
-    text: string
-    route: string
-}
-
-const LinkedItem = ({ children, text, route }: ILinkedItem) => {
+const LinkedItem = ({ content, route }: INavbarItem) => {
     return (
         <li>
-            <Link href={route}>
-                {children}
-                {text}
-            </Link>
+            <Link href={route}>{content}</Link>
         </li>
     )
 }
