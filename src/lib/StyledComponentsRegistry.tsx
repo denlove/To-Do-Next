@@ -2,7 +2,17 @@
 
 import React, { useState } from 'react'
 import { useServerInsertedHTML } from 'next/navigation'
+import isPropValid from '@emotion/is-prop-valid'
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
+
+function shouldForwardProp(propName: string, target: any) {
+    if (typeof target === 'string') {
+        // For HTML elements, forward the prop if it is a valid HTML attribute
+        return isPropValid(propName)
+    }
+    // For other elements, forward all props
+    return true
+}
 
 export default function StyledComponentsRegistry({
     children,
@@ -22,7 +32,11 @@ export default function StyledComponentsRegistry({
     if (typeof window !== 'undefined') return <>{children}</>
 
     return (
-        <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
+        <StyleSheetManager
+            sheet={styledComponentsStyleSheet.instance}
+            shouldForwardProp={shouldForwardProp}
+            enableVendorPrefixes
+        >
             {children}
         </StyleSheetManager>
     )
