@@ -1,6 +1,6 @@
 import { taskDict } from '@/dictionaries/taskDict'
 import ListControls from './components/ListControls/ListControls'
-import Task from '@/ui/Task/Task'
+import Task from './components/Task/Task'
 
 const ListBody = () => {
     return (
