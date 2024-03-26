@@ -1,13 +1,10 @@
 'use client'
 
 import { StyledButton } from './Button.styled'
+import { IButton } from '@/types/interfacesUI'
 
-interface IButton {
-    children?: React.ReactNode
-}
-
-const Button = ({ children }: IButton) => {
-    return <StyledButton>{children}</StyledButton>
+const Button = ({ children, variant }: IButton) => {
+    return <StyledButton $variant={variant}>{children}</StyledButton>
 }
 
 export default Button

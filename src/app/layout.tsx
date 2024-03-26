@@ -1,7 +1,7 @@
-import StyledComponentsRegistry from '@/lib/registry'
+import Providers from '@/lib/Providers'
 import Footer from '@/models/Footer'
 import Header from '@/models/Header'
-import { IParamChildren } from '@/types/interfaces'
+import { IParamChildren } from '@/types/interfacesBP'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -12,11 +12,11 @@ export default function RootLayout({ children }: Readonly<IParamChildren>) {
     return (
         <html lang='en'>
             <body>
-                <StyledComponentsRegistry>
+                <Providers>
                     <Header />
                     {children}
                     <Footer />
-                </StyledComponentsRegistry>
+                </Providers>
             </body>
         </html>
     )

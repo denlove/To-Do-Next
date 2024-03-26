@@ -1,7 +1,8 @@
 'use client'
 
 import { ITaskInfo } from '@/types/interfaces'
-import Input from '../Input/Input'
+import Input from '@/ui/Input/Input'
+import TaskControls from './components/TaskControls/TaskControls'
 
 const Task = ({ content }: ITaskInfo) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -11,14 +12,13 @@ const Task = ({ content }: ITaskInfo) => {
 
     return (
         <li>
-            <label>
-                <Input
-                    onChange={handleChange}
-                    type='checkbox'
-                    isCheck={undefined}
-                />
-                {content}
-            </label>
+            <Input
+                onChange={handleChange}
+                type='checkbox'
+                isCheck={undefined}
+                label={content}
+            />
+            <TaskControls />
         </li>
     )
 }

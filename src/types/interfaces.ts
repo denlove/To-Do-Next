@@ -1,12 +1,5 @@
-import { SomePartial } from './types'
-
-export interface IParamChildren {
-    children: React.ReactNode
-}
-
-export interface IContent<T> {
-    content: T
-}
+import { IContent } from './interfacesBP'
+import { ButtonVariants } from './types'
 
 export interface ILinkedImage {
     id?: number
@@ -25,10 +18,8 @@ export interface ITaskInfo extends IContent<string> {
     isCheck: boolean | undefined
 }
 
-// Just typing fun :D
-export interface IInput
-    extends Partial<Pick<ITaskInfo, 'isCheck'>>,
-        React.HTMLProps<HTMLInputElement> {
-    type: 'button' | 'checkbox' | 'text'
-    value?: string
+export interface ITaskControls {
+    id?: number
+    act: () => void
+    variant: ButtonVariants
 }
