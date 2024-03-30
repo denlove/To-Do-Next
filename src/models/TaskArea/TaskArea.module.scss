@@ -1,0 +1,19 @@
+.task-area {
+    width: 100%;
+    min-height: var(--task-area-height);
+    &_pos {
+        margin-top: var(--header-height);
+    }
+
+    &__list-header {
+        margin-top: 5rem;
+    }
+
+    &__list-main {
+        width: 100%;
+    }
+}
+
+#main {
+    width: 100%;
+}

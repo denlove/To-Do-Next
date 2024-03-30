@@ -1,10 +1,11 @@
 'use client'
 
-import { IContent } from '@/types/interfaces'
+import { IContent } from '@/types/interfacesBP'
+import { Headings } from '@/types/types'
 import styled from 'styled-components'
 
 interface IHeading extends IContent<string> {
-    elem: string
+    elem: Headings
 }
 
 const StyledHeading = styled.h1`

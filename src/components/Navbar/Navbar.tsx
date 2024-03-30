@@ -1,22 +1,28 @@
+'use client'
+
+import { usePathname } from 'next/navigation'
 import { navbarDict } from '@/dictionaries/navbarDict'
-import Button from '@/ui/Button/Button'
 import LinkedItem from '@/ui/LinkedItem/LinkedItem'
+import { RoutesList, StyledNavbar } from './Navbar.styled'
 
 const Navbar = () => {
+    const pathname = usePathname()
+
     return (
-        <nav>
-            <ul>
+        <StyledNavbar>
+            <RoutesList>
                 {navbarDict.map(el => {
                     return (
                         <LinkedItem
                             key={el.id}
                             route={el.route}
                             content={el.content}
+                            isActive={el.route === pathname}
                         />
                     )
                 })}
-            </ul>
-        </nav>
+            </RoutesList>
+        </StyledNavbar>
     )
 }
 

@@ -11,3 +11,7 @@ export interface IContent<T> {
 export interface IDefAllProperties<T> {
     [k: string]: T
 }
+
+export interface IClassName {
+    className: string
+}

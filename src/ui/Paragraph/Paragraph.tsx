@@ -1,7 +1,7 @@
 'use client'
 
 import styled from 'styled-components'
-import { IContent } from '@/types/interfaces'
+import { IContent } from '@/types/interfacesBP'
 
 interface IParagraph extends IContent<string> {}
 
