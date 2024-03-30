@@ -1,0 +1,10 @@
+@use '../../styles/mixins';
+
+.list-header {
+    width: 100%;
+
+    &__hgroup {
+        margin: 0 auto;
+        @include mixins.displayFlex($jc: center, $ai: center, $fd: column);
+    }
+}

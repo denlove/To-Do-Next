@@ -1,0 +1,6 @@
+@use '../../styles/mixins';
+
+.rights-block {
+    width: fit-content;
+    @include mixins.displayFlex($fd: column, $gp: 0.125rem);
+}
