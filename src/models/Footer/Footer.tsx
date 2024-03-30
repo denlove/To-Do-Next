@@ -1,8 +1,9 @@
 import ReservedRights from '@/components/ReservedRights/ReservedRights'
+import styles from './Footer.module.scss'
 
 const Footer = () => {
     return (
-        <footer>
+        <footer id={styles.footer}>
             <ReservedRights />
         </footer>
     )

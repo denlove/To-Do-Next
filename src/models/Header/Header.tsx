@@ -1,15 +1,16 @@
+import c from 'classnames'
 import Logo from '@/components/Logo/Logo'
 import Navbar from '@/components/Navbar/Navbar'
-import GeneralWrapper from '@/wrappers/GeneralWrapper'
+import Wrapper from '@/wrappers/Wrapper'
 import styles from './Header.module.scss'
 
 const Header = () => {
     return (
-        <header id={styles.header}>
-            <GeneralWrapper>
+        <header className={c(styles.header, styles.header_pos)}>
+            <Wrapper variant='header'>
                 <Logo />
                 <Navbar />
-            </GeneralWrapper>
+            </Wrapper>
         </header>
     )
 }
