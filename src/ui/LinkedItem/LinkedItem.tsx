@@ -1,11 +1,14 @@
-import { INavbarItem } from '@/types/interfaces'
-import Link from 'next/link'
+'use client'
 
-const LinkedItem = ({ content, route }: INavbarItem) => {
+import Link from 'next/link'
+import { INavbarItem } from '@/types/interfaces'
+import { StyledLinkedItem } from './LInkedItem.styles'
+
+const LinkedItem = ({ content, route, isActive }: INavbarItem) => {
     return (
-        <li>
+        <StyledLinkedItem $isActive={isActive}>
             <Link href={route}>{content}</Link>
-        </li>
+        </StyledLinkedItem>
     )
 }
 
