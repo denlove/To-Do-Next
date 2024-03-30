@@ -11,6 +11,7 @@ export interface ILinkedImage {
 export interface INavbarItem extends IContent<string> {
     id?: number
     route: string
+    isActive: boolean
 }
 
 export interface ITaskInfo extends IContent<string> {
