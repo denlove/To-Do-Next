@@ -1,7 +1,10 @@
-#header {
+.header {
     width: 100%;
     height: var(--header-height);
-    position: absolute;
-    top: 0;
-    left: 0;
+
+    &_pos {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
 }

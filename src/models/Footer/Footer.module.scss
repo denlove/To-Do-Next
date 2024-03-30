@@ -1,0 +1,6 @@
+@use '../../styles/mixins';
+
+#footer {
+    @include mixins.displayFlex();
+    height: var(--footer-height);
+}
