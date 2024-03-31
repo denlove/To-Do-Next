@@ -1,15 +1,15 @@
 'use client'
 
 import { IParamChildren } from '@/types/interfacesBP'
-// import StyledComponentsRegistry from './StyledComponentsRegistry'
 import GlobalStyles from '@/styles/global'
+import StoreProvider from './redux/StoreProvider'
 
 const Providers = ({ children }: IParamChildren) => {
     return (
-        <>
+        <StoreProvider>
             <GlobalStyles />
             {children}
-        </>
+        </StoreProvider>
     )
 }
 
