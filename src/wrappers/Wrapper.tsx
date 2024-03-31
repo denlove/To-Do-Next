@@ -8,7 +8,7 @@ interface IWrapper extends IParamChildren, Partial<IClassName> {
     variant: WrapperVariants
 }
 
-const Wrapper = ({ children, variant, className }: IWrapper) => {
+const Wrapper = ({ children, variant }: IWrapper) => {
     return <StyledWrapper $variant={variant}>{children}</StyledWrapper>
 }
 
