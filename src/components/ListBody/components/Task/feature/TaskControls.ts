@@ -5,7 +5,7 @@ interface ITaskControls {
 }
 
 class TaskControls implements ITaskControls {
-    constructor(task: HTMLLIElement) {}
+    constructor() {}
 
     public taskDone() {}
 

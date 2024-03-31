@@ -7,7 +7,6 @@ import TaskControls from './components/TaskControls/TaskControls'
 const Task = ({ content }: ITaskInfo) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const elem = e.target
-        console.log(elem, elem.checked)
     }
 
     return (
