@@ -1,0 +1,15 @@
+@use '../../styles/mixins';
+
+.form {
+    max-width: 37.5rem;
+    width: 100%;
+    margin: 0 auto;
+
+    &__list {
+        list-style-type: none;
+        border-radius: var(--r-20);
+        border: var(--list-border);
+        padding: 1rem 1.5rem;
+        @include mixins.displayFlex($fd: column, $gp: 0.5rem);
+    }
+}

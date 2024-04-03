@@ -1,4 +1,4 @@
-name: Linting stage
+name: Testing stage
 
 on:
     push:
@@ -16,7 +16,7 @@ on:
 
 jobs:
     lint:
-        name: Linting stage
+        name: Testing stage
         runs-on: ubuntu-latest
         timeout-minutes: 1
         steps:
@@ -35,4 +35,4 @@ jobs:
               run: yarn
 
             - name: '🔍 Lint code'
-              run: yarn lint
+              run: yarn test --coverage
