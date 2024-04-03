@@ -35,4 +35,4 @@ jobs:
               run: yarn
 
             - name: '🔍 Lint code'
-              run: yarn test
+              run: yarn test --coverage

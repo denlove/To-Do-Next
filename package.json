@@ -10,7 +10,7 @@
         "lint-staged": "lint-staged",
         "prettier": "prettier ./src --check",
         "prepare": "husky install",
-        "test": "jest --coverage",
+        "test": "jest",
         "test:watch": "jest --watch",
         "cypress:open": "cypress open"
     },
