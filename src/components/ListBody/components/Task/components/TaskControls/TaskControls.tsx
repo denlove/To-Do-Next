@@ -1,20 +1,19 @@
-'use client'
-
 import { taskControlsDict } from '@/dictionaries/taskControlsDict'
+import { ButtonMenu, DropdownButton } from './TaskControls.styles'
 import Button from '@/ui/Button/Button'
 
 const TaskControls = () => {
     return (
-        <aside>
+        <DropdownButton>
             <Button variant='image-like' />
-            <ul>
+            <ButtonMenu>
                 {taskControlsDict.map(el => (
                     <li key={el.id}>
                         <Button variant={el.variant} onClick={el.act} />
                     </li>
                 ))}
-            </ul>
-        </aside>
+            </ButtonMenu>
+        </DropdownButton>
     )
 }
 
