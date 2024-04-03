@@ -9,7 +9,7 @@ const TaskArea = () => {
         <div className={c(styles['task-area'], styles['task-area_pos'])}>
             <Wrapper variant='task-area'>
                 <ListHeader className={styles['task-area__list-header']} />
-                <main id='main'>
+                <main id={styles.main}>
                     <ListBody />
                 </main>
             </Wrapper>
