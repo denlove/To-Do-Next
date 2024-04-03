@@ -1,8 +1,9 @@
-@mixin displayFlex($jc: center, $ai: center, $fd: row, $gp: 0) {
+@mixin displayFlex($jc: center, $ai: center, $fd: row, $fw: nowrap, $gp: 0) {
     display: flex;
     justify-content: $jc;
     align-items: $ai;
     flex-direction: $fd;
+    flex-wrap: $fw;
     gap: $gp;
 }
 
