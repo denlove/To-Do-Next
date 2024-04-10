@@ -1,0 +1,177 @@
+name: BuildE2E
+
+on:
+    pull_request:
+        branches:
+            - master
+    workflow_call:
+
+concurrency:
+    group: ${{ github.head_ref }}
+    cancel-in-progress: true
+
+jobs:
+    install-cache:
+        name: Install and cache deps
+        runs-on: ubuntu-latest
+        timeout-minutes: 2
+        strategy:
+            matrix:
+                node-version: [20]
+        steps:
+            - name: 🔦 Checkout repository
+              uses: actions/checkout@v4
+
+            - name: 🔧 Setup NodeJS v${{ matrix.node-version }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: 📀 Cache yarn dependencies
+              uses: actions/cache@v4
+              id: cache-dependencies
+              with:
+                  path: node_modules
+                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: ${{ runner.os }}-yarn-
+
+            - name: 📀 Cache Cypress binary
+              uses: actions/cache@v4
+              id: cache-cypress-binary
+              with:
+                  path: ~/.cache/Cypress
+                  key: cypress-binary-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: cypress-binary-
+
+            - name: 💡 Install Dependencies
+              if: steps.cache-dependencies.outputs.cache-hit != 'true' || steps.cache-cypress-binary.outputs.cache-hit != 'true'
+              run: yarn install --force --non-interactive
+
+    build:
+        name: Restore deps, build app and upload .next
+        runs-on: ubuntu-latest
+        timeout-minutes: 2
+        needs: [install-cache]
+        strategy:
+            matrix:
+                node-version: [20]
+        steps:
+            - name: 🔦 Checkout repository
+              uses: actions/checkout@v4
+
+            - name: 🔧 Setup NodeJS v${{ matrix.node-version }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: 📦 Restore yarn dependencies
+              uses: actions/cache@v4
+              id: cache-dependencies
+              with:
+                  path: node_modules
+                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: ${{ runner.os }}-yarn-
+
+            - name: 📦 Build app
+              run: yarn build
+
+            - name: 🐶 Upload build artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: build-output
+                  path: .next
+                  retention-days: 1
+
+    e2e-tests-chrome:
+        name: e2e testing Chrome
+        runs-on: ubuntu-latest
+        timeout-minutes: 2
+        needs: build
+        strategy:
+            matrix:
+                node-version: [20]
+        steps:
+            - name: 🔦 Checkout repository
+              uses: actions/checkout@v4
+
+            - name: 🔧 Setup NodeJS v${{ matrix.node-version }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: 📦 Restore yarn dependencies
+              uses: actions/cache@v4
+              id: cache-dependencies
+              with:
+                  path: node_modules
+                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: ${{ runner.os }}-yarn-
+
+            - name: 📦 Restore Cypress binary
+              id: cache-cypress-binary
+              uses: actions/cache@v4
+              with:
+                  path: ~/.cache/Cypress
+                  key: cypress-binary-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: cypress-binary-
+
+            - name: Download build artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  name: build-output
+                  path: .next
+
+            - name: Run cypress
+              uses: cypress-io/github-action@v6
+              with:
+                  start: yarn start
+                  browser: chrome
+                  headed: true
+                  install: false
+
+    e2e-tests-firefox:
+        name: e2e testing Firefox
+        runs-on: ubuntu-latest
+        timeout-minutes: 2
+        needs: build
+        strategy:
+            matrix:
+                node-version: [20]
+        steps:
+            - name: 🔦 Checkout repository
+              uses: actions/checkout@v4
+
+            - name: 🔧 Setup NodeJS v${{ matrix.node-version }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: 📦 Restore yarn dependencies
+              uses: actions/cache@v4
+              id: cache-dependencies
+              with:
+                  path: node_modules
+                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: ${{ runner.os }}-yarn-
+
+            - name: 📦 Restore Cypress binary
+              id: cache-cypress-binary
+              uses: actions/cache@v4
+              with:
+                  path: ~/.cache/Cypress
+                  key: cypress-binary-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: cypress-binary-
+
+            - name: Download build artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  name: build-output
+                  path: .next
+
+            - name: Run cypress
+              uses: cypress-io/github-action@v6
+              with:
+                  start: yarn start
+                  browser: firefox
+                  headed: true
+                  install: false
