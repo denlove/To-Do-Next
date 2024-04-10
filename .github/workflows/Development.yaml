@@ -11,10 +11,6 @@ on:
             - reopened
     workflow_call:
 
-concurrency:
-    group: ${{ github.head_ref }}
-    cancel-in-progress: false
-
 jobs:
     install-cache:
         name: Install and cache deps
