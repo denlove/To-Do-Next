@@ -17,7 +17,7 @@ const Navbar = () => {
                             key={el.id}
                             route={el.route}
                             content={el.content}
-                            isActive={el.route === pathname}
+                            isActive={el.route === pathname ? true : false}
                         />
                     )
                 })}

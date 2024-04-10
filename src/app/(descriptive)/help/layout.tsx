@@ -1,4 +1,4 @@
-import { IParamChildren } from '@/types/interfaces'
+import { IParamChildren } from '@/types/interfacesBP'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

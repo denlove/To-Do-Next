@@ -1,15 +1,15 @@
 describe('Navigation', () => {
-    it('should navigate to the about page', () => {
-        // Start from the index page
+    it('should navigate to the "About page"', () => {
         cy.visit('http://localhost:3000/')
-
-        // Find a link with an href attribute containing "about" and click it
         cy.get('a[href*="about"]').click()
-
-        // The new url should include "/about"
         cy.url().should('include', '/about')
-
-        // The new page should contain an h1 with "About"
         cy.get('h1').contains('About')
+    })
+
+    it('should navigate to the "Help page"', () => {
+        cy.visit('http://localhost:3000/')
+        cy.get('a[href*="help"]').click()
+        cy.url().should('include', '/help')
+        cy.get('h1').contains('Help')
     })
 })
