@@ -2,14 +2,14 @@
 
 import { IParamChildren } from '@/types/interfacesBP'
 import GlobalStyles from '@/styles/global'
-import StoreProvider from './redux/StoreProvider'
+import ReduxProvider from './providers/ReduxProvider'
 
 const Providers = ({ children }: IParamChildren) => {
     return (
-        <StoreProvider>
+        <ReduxProvider>
             <GlobalStyles />
             {children}
-        </StoreProvider>
+        </ReduxProvider>
     )
 }
 
