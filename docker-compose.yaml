@@ -1,0 +1,10 @@
+services:
+    web:
+        build: ./
+        command: yarn dev
+        container_name: docker-next
+        volumes:
+            - ./:/app/
+            - /app/node_modules
+        ports:
+            - 3000:3000
