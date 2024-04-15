@@ -5,9 +5,7 @@ import { IContent } from '@/types/interfacesBP'
 
 interface IParagraph extends IContent<string> {}
 
-const StyledParagraph = styled.p`
-    color: blue;
-`
+const StyledParagraph = styled.p``
 
 const Paragraph = ({ content }: IParagraph) => {
     return <StyledParagraph>{content}</StyledParagraph>

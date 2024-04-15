@@ -16,11 +16,15 @@ export interface INavbarItem extends IContent<string> {
 
 export interface ITaskInfo extends IContent<string> {
     id?: number
-    isCheck: boolean | undefined
+    isCheck: boolean
 }
 
 export interface ITaskControls {
     id?: number
     act: () => void
     variant: ButtonVariants
+    options?: {
+        bg: any
+        alt: string
+    }
 }

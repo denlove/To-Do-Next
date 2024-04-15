@@ -14,4 +14,5 @@ export interface IInput
 export interface IButton extends React.HTMLProps<HTMLButtonElement> {
     children?: React.ReactNode
     variant: ButtonVariants
+    type?: 'button'
 }

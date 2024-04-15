@@ -6,22 +6,24 @@ import TaskControls from './components/TaskControls/TaskControls'
 import { StyledTask } from './Task.styled'
 import { countSelector, increaseBy } from '@/redux/features/counterSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { useState } from 'react'
 
-const Task = ({ content }: ITaskInfo) => {
+const Task = ({ content, isCheck }: ITaskInfo) => {
+    const [isChecked, setIsChecked] = useState<boolean>(isCheck)
     const count = useAppSelector(countSelector)
     const dispatch = useAppDispatch()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const elem = e.target
         dispatch(increaseBy(5))
+        setIsChecked(!isChecked)
     }
 
     return (
-        <StyledTask>
+        <StyledTask $isCheck={isChecked}>
             <Input
                 onChange={handleChange}
                 type='checkbox'
-                isCheck={undefined}
+                checked={isChecked}
                 label={content}
             />
             <TaskControls />

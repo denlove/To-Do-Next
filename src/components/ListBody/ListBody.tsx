@@ -1,12 +1,14 @@
+'use client'
+
 import { taskDict } from '@/dictionaries/taskDict'
 import ListControls from './components/ListControls/ListControls'
 import Task from './components/Task/Task'
-import styles from './ListBody.module.scss'
+import { MainForm, TaskList } from './ListBody.styled'
 
 const ListBody = () => {
     return (
-        <form className={styles.form}>
-            <ul className={styles.form__list}>
+        <MainForm onSubmit={(e: React.FormEvent) => e.preventDefault()}>
+            <TaskList>
                 {taskDict.map(el => (
                     <Task
                         key={el.id}
@@ -14,9 +16,9 @@ const ListBody = () => {
                         isCheck={el.isCheck}
                     />
                 ))}
-            </ul>
+            </TaskList>
             <ListControls />
-        </form>
+        </MainForm>
     )
 }
 

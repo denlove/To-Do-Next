@@ -5,7 +5,7 @@ type DisplayFlexType = Partial<{
     [k in FlexStyles]: string
 }>
 
-export const displayFlex = ({
+const displayFlex = ({
     jc = 'center',
     ai = 'center',
     fd = 'row',
@@ -19,3 +19,12 @@ export const displayFlex = ({
         gap: ${gp};
     `
 }
+
+const box = (width: string) => {
+    return css`
+        width: ${width};
+        height: ${width};
+    `
+}
+
+export { displayFlex, box }

@@ -6,8 +6,14 @@ interface IStyledButton {
 }
 
 const StyledButton = styled.button<IStyledButton>`
-    background-color: ${({ $variant }) =>
-        $variant === 'image-like' ? 'red' : 'blue'};
-    border: 1px solid black;
+    background-color: transparent;
+    cursor: pointer;
+    width: 31px;
+    height: 31px;
+    transition: transform 0.1s linear;
+
+    &:hover {
+        transform: scale(0.95);
+    }
 `
 export { StyledButton }
