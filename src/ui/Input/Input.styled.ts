@@ -1,12 +1,67 @@
+import { box, displayFlex } from '@/styles/templates'
 import { InputTypes } from '@/types/types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 interface IStyledInput {
     type: InputTypes
 }
 
-const StyledInput = styled.input<IStyledInput>`
-    background-color: ${({ type }) => (type === 'text' ? 'brown' : 'orange')};
+const StyledLable = styled.label`
+    overflow: hidden;
+    ${displayFlex({ gp: '0.5rem' })}
+    position: relative;
+    padding-right: 0.5rem;
 `
 
-export default StyledInput
+const StyledInput = styled.input<IStyledInput>`
+    ${({ type }) => type === 'checkbox' && checkboxCss}
+`
+
+const checkboxCss = css`
+    ${box('1.5rem')};
+    margin: 6px;
+    padding: 0;
+    border: 2px solid var(--checkbox-border-color);
+    appearance: none;
+    background-color: transparent;
+    outline: 0px solid transparent;
+    transition: all 0.2s linear;
+    border-radius: var(--r-8);
+
+    &:focus-visible {
+        outline: 3px solid var(--checkbox-hover-color);
+        transform: scale(1.05);
+    }
+
+    &:checked {
+        opacity: 1;
+        background-size: cover;
+        padding: 3px;
+    }
+
+    &:not(:disabled) {
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--checkbox-hover-color);
+                outline: 3px solid var(--checkbox-hover-color);
+                transform: scale(1.05);
+            }
+        }
+
+        &:checked {
+            border-color: var(--checkbox-checked-color);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><path fill="none" stroke="%23bfbfbf" stroke-linecap="round" stroke-width="3" d="m5 14l3.233 2.425a1 1 0 0 0 1.374-.167L18 6"/></svg>');
+            background-position: center;
+        }
+    }
+
+    &:disabled {
+        background-color: var(--checkbox-disabled-bg-color);
+
+        &:checked {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 32 32" xml:space="preserve"><path style="fill: %238b8c89" d="M11.941,28.877l-11.941-11.942l5.695-5.696l6.246,6.246l14.364-14.364L32,8.818"/></svg>');
+        }
+    }
+`
+
+export { StyledLable, StyledInput }

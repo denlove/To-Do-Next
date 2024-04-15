@@ -1,14 +1,14 @@
 'use client'
 
 import { IInput } from '@/types/interfacesUI'
-import StyledInput from './Input.styled'
+import { StyledLable, StyledInput } from './Input.styled'
 
-const Input = ({ type, isCheck, label, ...props }: IInput) => {
+const Input = ({ label, ...props }: IInput) => {
     return (
-        <label>
-            <StyledInput type={type} checked={isCheck} {...props} />
+        <StyledLable>
+            <StyledInput {...props} />
             {label}
-        </label>
+        </StyledLable>
     )
 }
 
