@@ -1,6 +1,15 @@
 @use '../../styles/mixins';
 
 .rights-block {
-    width: fit-content;
     @include mixins.displayFlex($fd: column, $gp: 0.125rem);
+    width: fit-content;
+    color: var(--color-0-0-75);
+
+    & * {
+        font: {
+            size: var(--fs-14);
+            family: var(--ff-roboto-m);
+            weight: 100;
+        }
+    }
 }
