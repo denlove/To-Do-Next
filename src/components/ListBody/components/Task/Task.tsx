@@ -1,32 +1,46 @@
 'use client'
 
+import React from 'react'
 import { ITaskInfo } from '@/types/interfaces'
 import Input from '@/ui/Input/Input'
 import TaskControls from './components/TaskControls/TaskControls'
-import { StyledTask } from './Task.styled'
-import { countSelector, increaseBy } from '@/redux/features/counterSlice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { useState } from 'react'
+import { StyledLable, StyledTask } from './Task.styled'
+import {
+    disableEditing,
+    focusTextInput,
+    resizeByContent,
+} from './helpers/handleTaskInputs'
+import { InputFocus } from '@/types/types'
+import { useHandleInputs } from './hooks/useHandleInputs'
 
-const Task = ({ content, isCheck }: ITaskInfo) => {
-    const [isChecked, setIsChecked] = useState<boolean>(isCheck)
-    const count = useAppSelector(countSelector)
-    const dispatch = useAppDispatch()
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(increaseBy(5))
-        setIsChecked(!isChecked)
-    }
+const Task = ({ id, content, isCheck }: ITaskInfo) => {
+    const {
+        isChecked,
+        handleCheckBoxChange,
+        inputValue,
+        handleTextInputChange,
+        editTaskText,
+    } = useHandleInputs(id, isCheck, content)
 
     return (
-        <StyledTask $isCheck={isChecked}>
-            <Input
-                onChange={handleChange}
-                type='checkbox'
-                checked={isChecked}
-                label={content}
-            />
-            <TaskControls />
+        <StyledTask draggable $isCheck={isChecked}>
+            <StyledLable>
+                <Input
+                    type='checkbox'
+                    onChange={handleCheckBoxChange}
+                    checked={isChecked}
+                />
+                <Input
+                    type='text'
+                    onChange={handleTextInputChange}
+                    onMouseDown={disableEditing}
+                    onKeyDown={resizeByContent}
+                    onDoubleClick={focusTextInput}
+                    onBlur={(e: InputFocus) => editTaskText(e, id, content)}
+                    value={inputValue}
+                />
+            </StyledLable>
+            <TaskControls id={id} toggleCheck={handleCheckBoxChange} />
         </StyledTask>
     )
 }
