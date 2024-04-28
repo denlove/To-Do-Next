@@ -2,14 +2,7 @@ import { uuidGenerate } from '@/utils/uuid'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../store'
 import { currentDate } from '@/utils/currentDate'
-
-interface TaskState {
-    id: string
-    content: string
-    isCheck: boolean
-    createdAt: string
-    updatedAt: string
-}
+import { TaskState } from '@/types/interfaces'
 
 type Payload = PayloadAction<string>
 

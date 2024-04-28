@@ -5,6 +5,7 @@ import ListControls from './components/ListControls/ListControls'
 import Task from './components/Task/Task'
 import { MainForm, TaskList } from './ListBody.styled'
 import { taskSelector } from '@/redux/features/taskSlice'
+import { TaskState } from '@/types/interfaces'
 
 const ListBody = () => {
     const todos = useAppSelector(taskSelector)
@@ -12,7 +13,7 @@ const ListBody = () => {
     return (
         <MainForm onSubmit={(e: React.FormEvent) => e.preventDefault()}>
             <TaskList>
-                {todos.map(el => (
+                {todos.map((el: TaskState) => (
                     <Task
                         key={el.id}
                         id={el.id}

@@ -28,3 +28,11 @@ export interface ITaskControls {
         alt: string
     }
 }
+
+export interface TaskState {
+    id: string
+    content: string
+    isCheck: boolean
+    createdAt: string
+    updatedAt: string
+}
