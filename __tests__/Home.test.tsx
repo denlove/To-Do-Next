@@ -3,15 +3,14 @@ import HomePage from '../src/app/page'
 import ReduxProvider from '@/lib/providers/ReduxProvider'
 
 describe('Page', () => {
-    it('renders a main element', () => {
+    it('renders a main element', async () => {
         render(
             <ReduxProvider>
-                <HomePage />
+                <HomePage />,
             </ReduxProvider>,
         )
 
-        const main = screen.getByRole('main')
-
+        const main = await screen.findByRole('main')
         expect(main).toBeInTheDocument()
     })
 })
