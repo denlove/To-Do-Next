@@ -22,6 +22,8 @@ const ButtonMenu = styled.menu<IButtonMenu>`
     left: 0;
     opacity: 0;
     transition: all 0.3s ease-out;
+    transform: scale(0.5);
+    visibility: hidden;
     height: 100%;
     ${displayFlex({ gp: '0.125rem', jc: 'space-between' })};
     z-index: 1;
@@ -35,6 +37,8 @@ const Option = styled.li`
 `
 
 const openMenuCss = css`
+    transform: scale(1);
+    visibility: visible;
     left: -230%;
     opacity: 1;
 `

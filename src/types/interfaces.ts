@@ -15,7 +15,7 @@ export interface INavbarItem extends IContent<string> {
 }
 
 export interface ITaskInfo extends IContent<string> {
-    id?: number
+    id: string
     isCheck: boolean
 }
 
@@ -27,4 +27,12 @@ export interface ITaskControls {
         bg: any
         alt: string
     }
+}
+
+export interface TaskState {
+    id: string
+    content: string
+    isCheck: boolean
+    createdAt: string
+    updatedAt: string
 }

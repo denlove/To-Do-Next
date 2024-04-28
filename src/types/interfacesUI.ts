@@ -8,11 +8,11 @@ export interface IInput
         React.HTMLProps<HTMLInputElement> {
     type: 'button' | 'checkbox' | 'text'
     value?: string
-    label: string
 }
 
 export interface IButton extends React.HTMLProps<HTMLButtonElement> {
     children?: React.ReactNode
     variant: ButtonVariants
     type?: 'button'
+    text?: string
 }

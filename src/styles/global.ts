@@ -13,8 +13,8 @@ const GlobalStyles = createGlobalStyle`
         --color-0-0-50: hsl(0, 0%, 50%);
         --color-0-0-75: hsl(0, 0%, 75%);
         --color-0-0-90: hsl(0, 0%, 90%);
-        --color-240-50-90: hsl(240, 25%, 90%);
-        --color-180-50-90: hsl(120, 50%, 90%);
+        --color-240-50-90: hsl(240, 50%, 90%);
+        --color-120-50-90: hsl(120, 50%, 90%);
         
         // custom checkbox
         --checkbox-border-color: var(--color-0-0-50);
@@ -24,6 +24,7 @@ const GlobalStyles = createGlobalStyle`
 
         // radiuses
         --r-8: 0.5rem;
+        --r-16: 1rem;
         --r-20: 1.25rem;
         --r-30: 1.875rem;
 
@@ -37,9 +38,10 @@ const GlobalStyles = createGlobalStyle`
         // borders
         --list-border: 1px solid var(--color-240-50-90);
         --strike-border: 1px solid var(--checkbox-checked-color);
+        --add-button-border: 2px solid var(--color-120-50-90);
 
         // calcs
-        --task-area-height: calc(100vh - var(--header-height) - var(--footer-height));
+        --task-area-height: calc(100vh - var(--header-height) - var(--footer-height) - 2rem);
     }
     * {
         border: none;

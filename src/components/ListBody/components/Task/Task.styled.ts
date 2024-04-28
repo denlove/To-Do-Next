@@ -8,11 +8,12 @@ interface IStyledTask {
 const StyledTask = styled.li<IStyledTask>`
     ${displayFlex({ jc: 'space-between' })};
     width: 100%;
+    height: 2.5rem;
     overflow: hidden;
-    font-size: var(--fs-18);
-    font-family: var(--ff-roboto);
-    color: var(--color-0-0-30);
     user-select: none;
+    cursor: pointer;
+
+    ${({ $isCheck }) => $isCheck && endOfList}
 
     & label::before {
         content: '';
@@ -31,9 +32,28 @@ const StyledTask = styled.li<IStyledTask>`
     }
 `
 
+const StyledLable = styled.label`
+    overflow: hidden;
+    ${displayFlex({ jc: 'space-between' })};
+    position: relative;
+    padding-right: 0.5rem;
+    height: 100%;
+`
+
 const strikeCss = css`
     width: 100%;
     opacity: 1;
 `
 
-export { StyledTask }
+const endOfList = css`
+    animation: drag 0.2s linear 0s 2 alternate forwards;
+    order: 99;
+
+    @keyframes drag {
+        to {
+            transform: translateX(0.5rem);
+        }
+    }
+`
+
+export { StyledTask, StyledLable }

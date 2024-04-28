@@ -3,9 +3,10 @@
 import { StyledButton } from './Button.styled'
 import { IButton } from '@/types/interfacesUI'
 
-const Button = ({ children, variant, ...props }: IButton) => {
+const Button = ({ children, text, variant, ...props }: IButton) => {
     return (
         <StyledButton $variant={variant} {...props}>
+            {text}
             {children}
         </StyledButton>
     )

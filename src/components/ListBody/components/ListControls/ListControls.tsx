@@ -1,18 +1,30 @@
-import { listControlsDict } from '@/dictionaries/listControlsDict'
+'use client'
+
+import Image from 'next/image'
+import { useSetListControls } from './hooks/useSetListControls'
+import PlusSvg from '../../../../../public/assets/plus.svg'
 import Button from '@/ui/Button/Button'
-import styles from './ListControls.module.scss'
+import { ControlsArticle, ControlsMenu, ListItem } from './ListControls.styled'
 
 const ListControls = () => {
+    const buttonsDict = useSetListControls()
+
     return (
-        <article className={styles['list-controls']}>
-            <menu className={styles['list-controls__menu']}>
-                {listControlsDict.map(el => (
-                    <li key={el.id}>
-                        <Button variant='primary' />
-                    </li>
+        <ControlsArticle>
+            <ControlsMenu>
+                {buttonsDict.map(el => (
+                    <ListItem key={el.id}>
+                        <Button
+                            onClick={el.act}
+                            variant='primary'
+                            text='Add task'
+                        >
+                            <Image src={PlusSvg} alt='' />
+                        </Button>
+                    </ListItem>
                 ))}
-            </menu>
-        </article>
+            </ControlsMenu>
+        </ControlsArticle>
     )
 }
 
