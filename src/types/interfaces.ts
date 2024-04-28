@@ -15,7 +15,7 @@ export interface INavbarItem extends IContent<string> {
 }
 
 export interface ITaskInfo extends IContent<string> {
-    id?: number
+    id: string
     isCheck: boolean
 }
 
