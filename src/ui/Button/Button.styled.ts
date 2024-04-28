@@ -1,19 +1,36 @@
+import { displayFlex } from '@/styles/templates'
 import { ButtonVariants } from '@/types/types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 interface IStyledButton {
     $variant: ButtonVariants
 }
 
 const StyledButton = styled.button<IStyledButton>`
-    background-color: transparent;
     cursor: pointer;
-    width: 31px;
-    height: 31px;
-    transition: transform 0.1s linear;
+    background-color: transparent;
+
+    ${({ $variant }) => ($variant === 'image-like' ? imageLikeCss : primaryCss)}
+`
+
+const primaryCss = css`
+    border-radius: var(--r-20);
+    ${displayFlex({ gp: '0.25rem' })}
+    transition: all 0.1s ease-in;
 
     &:hover {
-        transform: scale(0.95);
+        transform: scale(0.97);
     }
 `
+
+const imageLikeCss = css`
+    width: 31px;
+    height: 31px;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+        transform: scale(0.9);
+    }
+`
+
 export { StyledButton }

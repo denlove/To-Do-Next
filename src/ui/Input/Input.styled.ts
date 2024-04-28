@@ -1,4 +1,4 @@
-import { box, displayFlex } from '@/styles/templates'
+import { box } from '@/styles/templates'
 import { InputTypes } from '@/types/types'
 import styled, { css } from 'styled-components'
 
@@ -6,27 +6,37 @@ interface IStyledInput {
     type: InputTypes
 }
 
-const StyledLable = styled.label`
-    overflow: hidden;
-    ${displayFlex({ gp: '0.5rem' })}
-    position: relative;
-    padding-right: 0.5rem;
-`
-
 const StyledInput = styled.input<IStyledInput>`
-    ${({ type }) => type === 'checkbox' && checkboxCss}
+    background-color: transparent;
+    transition: all 0.2s linear;
+
+    ${({ type }) => (type === 'checkbox' ? checkboxInputCss : textInputCss)}
 `
 
-const checkboxCss = css`
+const textInputCss = css`
+    font-size: var(--fs-20);
+    font-family: var(--ff-roboto);
+    color: var(--color-0-0-30);
+    min-width: 3rem;
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem;
+    border-radius: var(--r-16);
+
+    &:focus {
+        background-color: var(--color-0-0-90);
+    }
+`
+
+const checkboxInputCss = css`
     ${box('1.5rem')};
     margin: 6px;
     padding: 0;
     border: 2px solid var(--checkbox-border-color);
     appearance: none;
-    background-color: transparent;
     outline: 0px solid transparent;
-    transition: all 0.2s linear;
     border-radius: var(--r-8);
+    flex-shrink: 0;
 
     &:focus-visible {
         outline: 3px solid var(--checkbox-hover-color);
@@ -64,4 +74,4 @@ const checkboxCss = css`
     }
 `
 
-export { StyledLable, StyledInput }
+export { StyledInput }
