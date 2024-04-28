@@ -1,5 +1,7 @@
 import TaskArea from '@/models/TaskArea'
 
-export default function HomePage() {
+const HomePage = () => {
     return <TaskArea />
 }
+
+export default HomePage
