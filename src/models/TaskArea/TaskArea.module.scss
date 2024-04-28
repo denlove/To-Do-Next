@@ -1,8 +1,9 @@
 .task-area {
     width: 100%;
     min-height: var(--task-area-height);
+
     &_pos {
-        margin-top: var(--header-height);
+        margin: var(--header-height) 0 2rem 0;
     }
 
     &__list-header {
