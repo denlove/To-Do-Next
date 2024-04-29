@@ -1,17 +1,13 @@
 'use client'
 
 import React from 'react'
+import { disableEditing, focusTextInput } from './helpers/handleTaskInputs'
+import { useHandleInputs } from './hooks/useHandleInputs'
 import { ITaskInfo } from '@/types/interfaces'
+import { InputFocus } from '@/types/types'
 import Input from '@/ui/Input/Input'
 import TaskControls from './components/TaskControls/TaskControls'
 import { StyledLable, StyledTask } from './Task.styled'
-import {
-    disableEditing,
-    focusTextInput,
-    resizeByContent,
-} from './helpers/handleTaskInputs'
-import { InputFocus } from '@/types/types'
-import { useHandleInputs } from './hooks/useHandleInputs'
 
 const Task = ({ id, content, isCheck }: ITaskInfo) => {
     const {
@@ -32,12 +28,13 @@ const Task = ({ id, content, isCheck }: ITaskInfo) => {
                 />
                 <Input
                     type='text'
+                    placeholder='Click twice to edit'
                     onChange={handleTextInputChange}
                     onMouseDown={disableEditing}
-                    onKeyDown={resizeByContent}
                     onDoubleClick={focusTextInput}
                     onBlur={(e: InputFocus) => editTaskText(e, id, content)}
                     value={inputValue}
+                    autoFocus={!inputValue}
                 />
             </StyledLable>
             <TaskControls id={id} toggleCheck={handleCheckBoxChange} />

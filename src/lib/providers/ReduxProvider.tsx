@@ -3,8 +3,8 @@
 import { useRef } from 'react'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import { makeStore, AppStore } from '../../redux/store'
 import { IParamChildren } from '@/types/interfacesBP'
+import { makeStore, AppStore } from '../../redux/store'
 
 export default function ReduxProvider({ children }: IParamChildren) {
     const storeRef = useRef<AppStore>()

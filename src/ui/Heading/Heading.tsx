@@ -1,8 +1,8 @@
 'use client'
 
+import styled from 'styled-components'
 import { IContent } from '@/types/interfacesBP'
 import { Headings } from '@/types/types'
-import styled from 'styled-components'
 
 interface IHeading extends IContent<string> {
     elem: Headings

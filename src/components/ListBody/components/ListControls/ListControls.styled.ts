@@ -1,5 +1,5 @@
-import { displayFlex } from '@/styles/templates'
 import styled from 'styled-components'
+import { displayFlex } from '@/styles/templates'
 
 const ControlsArticle = styled.article`
     width: 100%;

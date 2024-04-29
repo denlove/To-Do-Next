@@ -1,5 +1,5 @@
-import { displayFlex } from '@/styles/templates'
 import styled, { css } from 'styled-components'
+import { displayFlex } from '@/styles/templates'
 
 interface IButtonMenu {
     $isOpened: boolean

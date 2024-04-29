@@ -1,5 +1,5 @@
-import { FlexStyles } from '@/types/types'
 import { css } from 'styled-components'
+import { FlexStyles } from '@/types/types'
 
 type DisplayFlexType = Partial<{
     [k in FlexStyles]: string

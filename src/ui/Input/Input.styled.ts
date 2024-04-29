@@ -1,9 +1,10 @@
+import styled, { css } from 'styled-components'
 import { box } from '@/styles/templates'
 import { InputTypes } from '@/types/types'
-import styled, { css } from 'styled-components'
 
 interface IStyledInput {
     type: InputTypes
+    value?: string
 }
 
 const StyledInput = styled.input<IStyledInput>`
@@ -13,18 +14,24 @@ const StyledInput = styled.input<IStyledInput>`
     ${({ type }) => (type === 'checkbox' ? checkboxInputCss : textInputCss)}
 `
 
-const textInputCss = css`
+const textInputCss = css<IStyledInput>`
     font-size: var(--fs-20);
     font-family: var(--ff-roboto);
     color: var(--color-0-0-30);
-    min-width: 3rem;
     width: 100%;
     height: 100%;
     padding: 0 1rem;
     border-radius: var(--r-16);
+    min-width: 3rem;
+    width: ${({ value }) => (value ? (value.length + 5) * 10 + 'px' : '12rem')};
 
     &:focus {
         background-color: var(--color-0-0-90);
+    }
+
+    &::placeholder {
+        font-size: var(--fs-18);
+        color: var(--color-0-0-75);
     }
 `
 

@@ -1,6 +1,6 @@
+import styled, { css } from 'styled-components'
 import { displayFlex } from '@/styles/templates'
 import { ButtonVariants } from '@/types/types'
-import styled, { css } from 'styled-components'
 
 interface IStyledButton {
     $variant: ButtonVariants

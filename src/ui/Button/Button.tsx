@@ -1,7 +1,7 @@
 'use client'
 
-import { StyledButton } from './Button.styled'
 import { IButton } from '@/types/interfacesUI'
+import { StyledButton } from './Button.styled'
 
 const Button = ({ children, text, variant, ...props }: IButton) => {
     return (

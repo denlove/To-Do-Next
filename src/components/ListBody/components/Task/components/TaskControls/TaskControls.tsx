@@ -1,11 +1,11 @@
 'use client'
 
-import Image from 'next/image'
 import React from 'react'
-import ExtraSvg from '../../../../../../../public/assets/extra_dots.svg'
-import Button from '@/ui/Button/Button'
-import { ButtonMenu, DropdownButton, Option } from './TaskControls.styled'
+import Image from 'next/image'
 import { useSetTaskControls } from './hooks/useSetTaskControls'
+import Button from '@/ui/Button/Button'
+import ExtraSvg from '../../../../../../../public/assets/extra_dots.svg'
+import { ButtonMenu, DropdownButton, Option } from './TaskControls.styled'
 
 interface ITaskControls {
     id: string

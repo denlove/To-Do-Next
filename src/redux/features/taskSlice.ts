@@ -1,8 +1,8 @@
-import { uuidGenerate } from '@/utils/uuid'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { RootState } from '../store'
-import { currentDate } from '@/utils/currentDate'
 import { TaskState } from '@/types/interfaces'
+import { currentDate } from '@/utils/currentDate'
+import { uuidGenerate } from '@/utils/uuid'
+import { RootState } from '../store'
 
 type Payload = PayloadAction<string>
 
@@ -14,7 +14,7 @@ const initialState = {
     todos: [
         {
             id: uuidGenerate(),
-            content: 'Click twice to input...',
+            content: '',
             isCheck: false,
             createdAt: currentDate(),
             updatedAt: '',
@@ -33,7 +33,7 @@ export const taskSlice = createSlice({
         addTask: ({ todos }) => {
             todos.push({
                 id: uuidGenerate(),
-                content: 'Click twice to input...',
+                content: '',
                 isCheck: false,
                 createdAt: currentDate(),
                 updatedAt: '',
@@ -61,5 +61,6 @@ export const taskSlice = createSlice({
 })
 
 export const { addTask, toggleCheck, editTask, removeTask } = taskSlice.actions
-export const taskSelector = (state: RootState) => state.taskManager.todos
+export const taskSelector = (state: RootState) =>
+    state.taskManager.todos as Array<TaskState>
 export default taskSlice.reducer

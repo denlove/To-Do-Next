@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { InputChange, InputFocus, InputMouse } from '@/types/types'
-import { useAppDispatch } from '@/redux/hooks'
 import { editTask, toggleCheck } from '@/redux/features/taskSlice'
+import { useAppDispatch } from '@/redux/hooks'
+import { InputChange, InputFocus, InputMouse } from '@/types/types'
 
 export const useHandleInputs = (
     id: string,
