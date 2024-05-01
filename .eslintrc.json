@@ -19,6 +19,7 @@
         "@typescript-eslint/no-explicit-any": 0,
         "@typescript-eslint/no-var-requires": 0,
         "react/display-name": 0,
+        "react-hooks/exhaustive-deps": 0,
         "import/order": [
             1,
             {
@@ -49,11 +50,6 @@
                     },
                     {
                         "pattern": "{.,..}/**/utils/*",
-                        "group": "internal",
-                        "position": "after"
-                    },
-                    {
-                        "pattern": "{.,..}/**/assets/**",
                         "group": "internal",
                         "position": "after"
                     },
