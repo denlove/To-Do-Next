@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { disableEditing, focusTextInput } from './helpers/handleTaskInputs'
 import { useHandleInputs } from './hooks/useHandleInputs'
 import { ITaskInfo } from '@/types/interfaces'
 import { InputFocus } from '@/types/types'
@@ -28,11 +27,9 @@ const Task = ({ id, content, isCheck }: ITaskInfo) => {
                 />
                 <Input
                     type='text'
-                    placeholder='Click twice to edit'
                     onChange={handleTextInputChange}
-                    onMouseDown={disableEditing}
-                    onDoubleClick={focusTextInput}
                     onBlur={(e: InputFocus) => editTaskText(e, id, content)}
+                    placeholder='Click twice to edit'
                     value={inputValue}
                     autoFocus={!inputValue}
                 />

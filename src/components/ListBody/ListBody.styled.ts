@@ -12,6 +12,7 @@ const TaskList = styled.ul`
     border-radius: var(--r-20);
     border: var(--list-border);
     padding: 1rem 1.5rem;
+    margin: 0 1rem;
     ${displayFlex({ fw: 'wrap', gp: '0.5rem' })};
 `
 
