@@ -1,3 +1,5 @@
+'use client'
+
 import { logoDict } from '@/dictionaries/logoDict'
 import LinkedImage from '@/ui/LinkedImage/LinkedImage'
 import styles from './Logo.module.scss'
