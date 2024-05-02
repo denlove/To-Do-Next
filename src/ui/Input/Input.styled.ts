@@ -25,13 +25,17 @@ const textInputCss = css<IStyledInput>`
     min-width: 3rem;
     width: ${({ value }) => (value ? (value.length + 5) * 10 + 'px' : '12rem')};
 
+    &:hover {
+        background-color: var(--checkbox-hover-color);
+    }
+
     &:focus {
-        background-color: var(--color-0-0-90);
+        background-color: var(--color-0-0-85);
     }
 
     &::placeholder {
         font-size: var(--fs-18);
-        color: var(--color-0-0-75);
+        color: var(--color-0-0-50);
     }
 `
 

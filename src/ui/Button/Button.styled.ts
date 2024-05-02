@@ -11,6 +11,12 @@ const StyledButton = styled.button<IStyledButton>`
     background-color: transparent;
 
     ${({ $variant }) => ($variant === 'image-like' ? imageLikeCss : primaryCss)}
+
+    @media (hover: none) {
+        &:hover {
+            transform: scale(1);
+        }
+    }
 `
 
 const primaryCss = css`
