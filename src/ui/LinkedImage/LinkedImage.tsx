@@ -1,5 +1,7 @@
-import Link from 'next/link'
+'use client'
+
 import Image from 'next/image'
+import Link from 'next/link'
 import { ILinkedImage } from '@/types/interfaces'
 
 const LinkedImage = ({ href, src, alt }: ILinkedImage) => {

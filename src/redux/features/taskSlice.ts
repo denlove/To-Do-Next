@@ -1,8 +1,8 @@
-import { uuidGenerate } from '@/utils/uuid'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { RootState } from '../store'
-import { currentDate } from '@/utils/currentDate'
 import { TaskState } from '@/types/interfaces'
+import { currentDate } from '@/utils/currentDate'
+import { uuidGenerate } from '@/utils/uuid'
+import { RootState } from '../store'
 
 type Payload = PayloadAction<string>
 
@@ -11,19 +11,11 @@ interface TodosState {
 }
 
 const initialState = {
-    todos: [
-        {
-            id: uuidGenerate(),
-            content: 'Click twice to input...',
-            isCheck: false,
-            createdAt: currentDate(),
-            updatedAt: '',
-        },
-    ],
+    todos: [],
 } satisfies TodosState as TodosState
 
 const findElemByID = (array: Array<TaskState>, ID: string): TaskState => {
-    return array.find(pay => pay.id === ID) as TaskState
+    return array.find(elem => elem.id === ID) as TaskState
 }
 
 export const taskSlice = createSlice({
@@ -33,7 +25,7 @@ export const taskSlice = createSlice({
         addTask: ({ todos }) => {
             todos.push({
                 id: uuidGenerate(),
-                content: 'Click twice to input...',
+                content: '',
                 isCheck: false,
                 createdAt: currentDate(),
                 updatedAt: '',
@@ -57,9 +49,20 @@ export const taskSlice = createSlice({
         removeTask: (state, { payload }: Payload) => {
             state.todos = state.todos.filter(todo => todo.id !== payload)
         },
+
+        removeAllEmptyContentTask: state => {
+            state.todos = state.todos.filter(todo => todo.content)
+        },
     },
 })
 
-export const { addTask, toggleCheck, editTask, removeTask } = taskSlice.actions
-export const taskSelector = (state: RootState) => state.taskManager.todos
+export const {
+    addTask,
+    toggleCheck,
+    editTask,
+    removeTask,
+    removeAllEmptyContentTask,
+} = taskSlice.actions
+export const taskSelector = (state: RootState) =>
+    state.taskManager.todos as Array<TaskState>
 export default taskSlice.reducer

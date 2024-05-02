@@ -1,7 +1,7 @@
 'use client'
 
-import { IParamChildren } from '@/types/interfacesBP'
 import GlobalStyles from '@/styles/global'
+import { IParamChildren } from '@/types/interfacesBP'
 import ReduxProvider from './providers/ReduxProvider'
 import StyledComponentsProvider from './providers/StyledComponentsRegistry'
 

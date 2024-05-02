@@ -18,6 +18,54 @@
         "prefer-const": "off",
         "@typescript-eslint/no-explicit-any": 0,
         "@typescript-eslint/no-var-requires": 0,
-        "react/display-name": 0
+        "react/display-name": 0,
+        "react-hooks/exhaustive-deps": 0,
+        "import/order": [
+            1,
+            {
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal",
+                    "parent",
+                    "sibling",
+                    "index",
+                    "type"
+                ],
+                "pathGroups": [
+                    {
+                        "pattern": "react",
+                        "group": "external",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "{.,..}/**/helpers/*",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "{.,..}/**/hooks/*",
+                        "group": "internal",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "{.,..}/**/utils/*",
+                        "group": "internal",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "{.,..}/**/*.scss",
+                        "group": "index",
+                        "position": "after"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": ["internal"],
+                "alphabetize": {
+                    "order": "asc",
+                    "orderImportKind": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ]
     }
 }

@@ -1,6 +1,12 @@
+@use '../../styles/mixins';
+
 .header {
     width: 100%;
     height: var(--header-height);
+    background-color: var(--main-bg-color-a);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    border-bottom: var(--header-border);
 
     &_pos {
         position: fixed;

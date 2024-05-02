@@ -1,5 +1,5 @@
-import { displayFlex } from '@/styles/templates'
 import styled, { css } from 'styled-components'
+import { displayFlex } from '@/styles/templates'
 
 interface IStyledTask {
     $isCheck: boolean | undefined
@@ -12,6 +12,7 @@ const StyledTask = styled.li<IStyledTask>`
     overflow: hidden;
     user-select: none;
     cursor: pointer;
+    transition: all 0.3s linear;
 
     ${({ $isCheck }) => $isCheck && endOfList}
 
@@ -47,7 +48,10 @@ const strikeCss = css`
 
 const endOfList = css`
     animation: drag 0.2s linear 0s 2 alternate forwards;
-    order: 99;
+    /* order: 99; */
+    & input:last-of-type {
+        color: var(--color-0-0-50);
+    }
 
     @keyframes drag {
         to {

@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 import { useSetListControls } from './hooks/useSetListControls'
-import PlusSvg from '../../../../../public/assets/plus.svg'
 import Button from '@/ui/Button/Button'
+import PlusSvg from '../../../../../public/assets/plus.svg'
 import { ControlsArticle, ControlsMenu, ListItem } from './ListControls.styled'
 
 const ListControls = () => {

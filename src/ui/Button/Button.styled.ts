@@ -1,6 +1,6 @@
+import styled, { css } from 'styled-components'
 import { displayFlex } from '@/styles/templates'
 import { ButtonVariants } from '@/types/types'
-import styled, { css } from 'styled-components'
 
 interface IStyledButton {
     $variant: ButtonVariants
@@ -11,6 +11,12 @@ const StyledButton = styled.button<IStyledButton>`
     background-color: transparent;
 
     ${({ $variant }) => ($variant === 'image-like' ? imageLikeCss : primaryCss)}
+
+    @media (hover: none) {
+        &:hover {
+            transform: scale(1);
+        }
+    }
 `
 
 const primaryCss = css`

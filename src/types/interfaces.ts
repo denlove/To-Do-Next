@@ -21,7 +21,7 @@ export interface ITaskInfo extends IContent<string> {
 
 export interface ITaskControls {
     id?: number
-    act: () => void
+    act(): void
     variant: ButtonVariants
     options?: {
         bg: any

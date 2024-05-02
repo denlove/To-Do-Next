@@ -8,10 +8,12 @@ const GlobalStyles = createGlobalStyle`
 
         // colors
         --main-bg-color: hsl(0, 0%, 97%);
+        --main-bg-color-a: hsla((0, 0%, 97%, 0.1));
         --color-0-0-15: hsl(0, 0%, 15%);
         --color-0-0-30: hsl(0, 0%, 30%);
         --color-0-0-50: hsl(0, 0%, 50%);
         --color-0-0-75: hsl(0, 0%, 75%);
+        --color-0-0-85: hsl(0, 0%, 85%);
         --color-0-0-90: hsl(0, 0%, 90%);
         --color-240-50-90: hsl(240, 50%, 90%);
         --color-120-50-90: hsl(120, 50%, 90%);
@@ -36,6 +38,7 @@ const GlobalStyles = createGlobalStyle`
         --fs-48: 3rem;
 
         // borders
+        --header-border: 1px solid var(--color-0-0-90);
         --list-border: 1px solid var(--color-240-50-90);
         --strike-border: 1px solid var(--checkbox-checked-color);
         --add-button-border: 2px solid var(--color-120-50-90);
