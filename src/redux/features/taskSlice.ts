@@ -11,19 +11,11 @@ interface TodosState {
 }
 
 const initialState = {
-    todos: [
-        {
-            id: uuidGenerate(),
-            content: '',
-            isCheck: false,
-            createdAt: currentDate(),
-            updatedAt: '',
-        },
-    ],
+    todos: [],
 } satisfies TodosState as TodosState
 
 const findElemByID = (array: Array<TaskState>, ID: string): TaskState => {
-    return array.find(pay => pay.id === ID) as TaskState
+    return array.find(elem => elem.id === ID) as TaskState
 }
 
 export const taskSlice = createSlice({
@@ -57,10 +49,20 @@ export const taskSlice = createSlice({
         removeTask: (state, { payload }: Payload) => {
             state.todos = state.todos.filter(todo => todo.id !== payload)
         },
+
+        removeAllEmptyContentTask: state => {
+            state.todos = state.todos.filter(todo => todo.content)
+        },
     },
 })
 
-export const { addTask, toggleCheck, editTask, removeTask } = taskSlice.actions
+export const {
+    addTask,
+    toggleCheck,
+    editTask,
+    removeTask,
+    removeAllEmptyContentTask,
+} = taskSlice.actions
 export const taskSelector = (state: RootState) =>
     state.taskManager.todos as Array<TaskState>
 export default taskSlice.reducer

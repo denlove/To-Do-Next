@@ -16,6 +16,7 @@ import { createPersistStorage } from './persistStorage'
 const persistConfig = {
     key: 'root',
     storage: createPersistStorage(),
+    blacklist: ['counter'],
 }
 
 export const rootReducer = combineReducers({
@@ -25,28 +26,24 @@ export const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-export const makeStore = () => {
-    const store: any = configureStore({
-        reducer: persistedReducer,
-        middleware: getDefaultMiddleware =>
-            getDefaultMiddleware({
-                serializableCheck: {
-                    ignoredActions: [
-                        FLUSH,
-                        REHYDRATE,
-                        PAUSE,
-                        PERSIST,
-                        PURGE,
-                        REGISTER,
-                    ],
-                },
-            }),
-    })
-    store.__persistor = persistStore(store)
+export const store = configureStore({
+    reducer: persistedReducer,
+    middleware: getDefaultMiddleware =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [
+                    FLUSH,
+                    REHYDRATE,
+                    PAUSE,
+                    PERSIST,
+                    PURGE,
+                    REGISTER,
+                ],
+            },
+        }),
+})
 
-    return store
-}
+export const persistor = persistStore(store)
 
-export type AppStore = ReturnType<typeof makeStore>
-export type RootState = ReturnType<AppStore['getState']>
-export type AppDispatch = AppStore['dispatch']
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
