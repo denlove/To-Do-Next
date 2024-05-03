@@ -10,33 +10,9 @@ interface IStyledInput {
 const StyledInput = styled.input<IStyledInput>`
     background-color: transparent;
     transition: all 0.2s linear;
+    cursor: pointer;
 
-    ${({ type }) => (type === 'checkbox' ? checkboxInputCss : textInputCss)}
-`
-
-const textInputCss = css<IStyledInput>`
-    font-size: var(--fs-20);
-    font-family: var(--ff-roboto);
-    color: var(--color-0-0-30);
-    width: 100%;
-    height: 100%;
-    padding: 0 1rem;
-    border-radius: var(--r-16);
-    min-width: 3rem;
-    width: ${({ value }) => (value ? (value.length + 5) * 10 + 'px' : '12rem')};
-
-    &:hover {
-        background-color: var(--checkbox-hover-color);
-    }
-
-    &:focus {
-        background-color: var(--color-0-0-85);
-    }
-
-    &::placeholder {
-        font-size: var(--fs-18);
-        color: var(--color-0-0-50);
-    }
+    ${({ type }) => type === 'checkbox' && checkboxInputCss}
 `
 
 const checkboxInputCss = css`

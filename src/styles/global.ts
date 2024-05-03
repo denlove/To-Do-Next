@@ -46,7 +46,7 @@ const GlobalStyles = createGlobalStyle`
         // calcs
         --task-area-height: calc(100vh - var(--header-height) - var(--footer-height) - 2rem);
     }
-    * {
+    *, ::after, ::before {
         border: none;
         margin: 0;
         padding: 0;

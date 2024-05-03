@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import { media, mediaQuery } from '@/styles/media'
 import { box, displayFlex } from '@/styles/templates'
+import { LARGE_MOBILE } from '@/utils/contents'
 
 interface INavbar {
     $visible: boolean
@@ -9,7 +10,7 @@ interface INavbar {
 const StyledNavigation = styled.div`
     width: 40%;
     ${mediaQuery(
-        media.mobile,
+        LARGE_MOBILE,
         css`
             ${box('2rem')};
         `,
@@ -19,7 +20,7 @@ const StyledNavigation = styled.div`
 const Navbar = styled.nav<INavbar>`
     width: 100%;
     ${mediaQuery(
-        media.mobile,
+        LARGE_MOBILE,
         css<INavbar>`
             visibility: hidden;
             position: absolute;
@@ -49,7 +50,7 @@ const RoutesList = styled.ul`
     ${displayFlex({ jc: 'space-around' })}
 
     ${mediaQuery(
-        media.mobile,
+        LARGE_MOBILE,
         css`
             ${displayFlex({ fd: 'column', jc: 'space-around', gp: '1rem' })}
             padding: 1rem 0;
@@ -66,7 +67,7 @@ const RoutesList = styled.ul`
             text-align: center;
 
             ${mediaQuery(
-                media.mobile,
+                LARGE_MOBILE,
                 css`
                     font-size: var(--fs-20);
                 `,

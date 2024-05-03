@@ -8,10 +8,9 @@ interface IStyledTask {
 const StyledTask = styled.li<IStyledTask>`
     ${displayFlex({ jc: 'space-between' })};
     width: 100%;
-    height: 2.5rem;
+    min-height: 2.5rem;
     overflow: hidden;
     user-select: none;
-    cursor: pointer;
     transition: all 0.3s linear;
 
     ${({ $isCheck }) => $isCheck && endOfList}
@@ -35,7 +34,7 @@ const StyledTask = styled.li<IStyledTask>`
 
 const StyledLable = styled.label`
     overflow: hidden;
-    ${displayFlex({ jc: 'space-between' })};
+    ${displayFlex({ jc: 'space-between', gp: '0.5rem' })};
     position: relative;
     padding-right: 0.5rem;
     height: 100%;
@@ -48,8 +47,8 @@ const strikeCss = css`
 
 const endOfList = css`
     animation: drag 0.2s linear 0s 2 alternate forwards;
-    /* order: 99; */
-    & input:last-of-type {
+    order: 99;
+    & textarea {
         color: var(--color-0-0-50);
     }
 
