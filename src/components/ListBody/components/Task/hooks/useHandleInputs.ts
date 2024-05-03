@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import { ChangeEvent, FocusEvent, useState } from 'react'
 import { editTask, toggleCheck } from '@/redux/features/taskSlice'
 import { useAppDispatch } from '@/redux/hooks'
-import { InputChange, InputFocus, InputMouse } from '@/types/types'
 
 export const useHandleInputs = (
     id: string,
@@ -10,18 +9,22 @@ export const useHandleInputs = (
 ) => {
     const dispatch = useAppDispatch()
     const [isChecked, setIsChecked] = useState<boolean>(isCheck)
-    const [inputValue, setInputValue] = useState<string>(content)
+    const [areaValue, setAreaValue] = useState<string>(content)
 
     const handleCheckBoxChange = () => {
         setIsChecked(pre => !pre)
         dispatch(toggleCheck(id))
     }
 
-    const handleTextInputChange = (e: InputChange) => {
-        setInputValue(e.target.value)
+    const handleTextInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        setAreaValue(e.target.value)
     }
 
-    const editTaskText = (e: InputFocus, id: string, initValue: string) => {
+    const editTaskText = (
+        e: FocusEvent<HTMLTextAreaElement>,
+        id: string,
+        initValue: string,
+    ) => {
         const currentValue = e.target.value
 
         if (initValue !== currentValue) {
@@ -32,7 +35,7 @@ export const useHandleInputs = (
     return {
         isChecked,
         handleCheckBoxChange,
-        inputValue,
+        areaValue,
         handleTextInputChange,
         editTaskText,
     }

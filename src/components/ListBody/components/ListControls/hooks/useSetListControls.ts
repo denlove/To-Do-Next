@@ -8,13 +8,13 @@ export const useSetListControls = (): Array<ITaskControls> => {
     const dispatch = useAppDispatch()
 
     const handleAddTask = () => {
-        dispatch(addTask())
+        const length = todos.length
 
-        // if (!todos[0]) {
-        //     dispatch(addTask())
-        // } else if (todos.every(el => el.content)) {
-        //     dispatch(addTask())
-        // }
+        if (!length) {
+            dispatch(addTask())
+        } else if (todos.every(el => el.content)) {
+            dispatch(addTask())
+        }
     }
 
     return [{ id: 1, act: handleAddTask, variant: 'primary' }]

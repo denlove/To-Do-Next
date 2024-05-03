@@ -3,8 +3,8 @@
 import React from 'react'
 import { useHandleInputs } from './hooks/useHandleInputs'
 import { ITaskInfo } from '@/types/interfaces'
-import { InputFocus } from '@/types/types'
 import Input from '@/ui/Input/Input'
+import GrowTextArea from './components/GrowTextArea/GrowTextArea'
 import TaskControls from './components/TaskControls/TaskControls'
 import { StyledLable, StyledTask } from './Task.styled'
 
@@ -12,26 +12,26 @@ const Task = ({ id, content, isCheck }: ITaskInfo) => {
     const {
         isChecked,
         handleCheckBoxChange,
-        inputValue,
+        areaValue,
         handleTextInputChange,
         editTaskText,
     } = useHandleInputs(id, isCheck, content)
 
     return (
-        <StyledTask draggable $isCheck={isChecked}>
+        <StyledTask $isCheck={isChecked}>
             <StyledLable>
                 <Input
+                    id={`check-${id}`}
                     type='checkbox'
                     onChange={handleCheckBoxChange}
                     checked={isChecked}
                 />
-                <Input
-                    type='text'
-                    onChange={handleTextInputChange}
-                    onBlur={(e: InputFocus) => editTaskText(e, id, content)}
-                    placeholder='Click twice to edit'
-                    value={inputValue}
-                    autoFocus={!inputValue}
+                <GrowTextArea
+                    id={id}
+                    content={content}
+                    areaValue={areaValue}
+                    changeAreaValue={handleTextInputChange}
+                    editTaskText={editTaskText}
                 />
             </StyledLable>
             <TaskControls id={id} toggleCheck={handleCheckBoxChange} />
