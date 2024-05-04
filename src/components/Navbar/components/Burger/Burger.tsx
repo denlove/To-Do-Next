@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import Image from 'next/image'
 import Button from '@/ui/Button/Button'
 import BurgerSvg from '../../../../../public/assets/burger.svg'
@@ -7,7 +8,7 @@ interface IBurger {
     onClick(): void
 }
 
-const Burger = ({ onClick }: IBurger) => {
+const Burger = memo(function Burger({ onClick }: IBurger) {
     return (
         <StyledBurger>
             <Button onClick={onClick} variant='image-like'>
@@ -15,6 +16,6 @@ const Burger = ({ onClick }: IBurger) => {
             </Button>
         </StyledBurger>
     )
-}
+})
 
 export default Burger

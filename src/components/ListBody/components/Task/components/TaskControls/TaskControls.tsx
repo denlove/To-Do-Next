@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { memo } from 'react'
 import Image from 'next/image'
 import { useSetTaskControls } from './hooks/useSetTaskControls'
 import Button from '@/ui/Button/Button'
@@ -12,7 +12,10 @@ interface ITaskControls {
     toggleCheck(): void
 }
 
-const TaskControls = ({ id, toggleCheck }: ITaskControls) => {
+const TaskControls = memo(function TaskControls({
+    id,
+    toggleCheck,
+}: ITaskControls) {
     const { isOpenMenu, handleDropdown, dict } = useSetTaskControls(
         id,
         toggleCheck,
@@ -37,6 +40,6 @@ const TaskControls = ({ id, toggleCheck }: ITaskControls) => {
             </ButtonMenu>
         </DropdownButton>
     )
-}
+})
 
 export default TaskControls
