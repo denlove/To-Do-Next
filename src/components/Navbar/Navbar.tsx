@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { navbarDict } from '@/dictionaries/navbarDict'
 import LinkedItem from '@/ui/LinkedItem/LinkedItem'
@@ -11,9 +11,13 @@ const NavBar = () => {
     const pathname = usePathname()
     const [isNavbarVisible, setNavbarVisible] = useState<boolean>(false)
 
+    const showMobileNavbar = useCallback(() => {
+        setNavbarVisible(pre => !pre)
+    }, [isNavbarVisible])
+
     return (
         <StyledNavigation>
-            <Burger onClick={() => setNavbarVisible(pre => !pre)} />
+            <Burger onClick={showMobileNavbar} />
             <Navbar $visible={isNavbarVisible}>
                 <RoutesList>
                     {navbarDict.map(el => {
