@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { memo } from 'react'
 import { useHandleInputs } from './hooks/useHandleInputs'
 import { ITaskInfo } from '@/types/interfaces'
 import Input from '@/ui/Input/Input'
@@ -8,7 +8,7 @@ import GrowTextArea from './components/GrowTextArea/GrowTextArea'
 import TaskControls from './components/TaskControls/TaskControls'
 import { StyledLable, StyledTask } from './Task.styled'
 
-const Task = ({ id, content, isCheck }: ITaskInfo) => {
+const Task = memo(function Task({ id, content, isCheck }: ITaskInfo) {
     const {
         isChecked,
         handleCheckBoxChange,
@@ -37,6 +37,6 @@ const Task = ({ id, content, isCheck }: ITaskInfo) => {
             <TaskControls id={id} toggleCheck={handleCheckBoxChange} />
         </StyledTask>
     )
-}
+})
 
 export default Task

@@ -1,12 +1,13 @@
 'use client'
 
+import { memo } from 'react'
 import Image from 'next/image'
 import { useSetListControls } from './hooks/useSetListControls'
 import Button from '@/ui/Button/Button'
 import PlusSvg from '../../../../../public/assets/plus.svg'
 import { ControlsArticle, ControlsMenu, ListItem } from './ListControls.styled'
 
-const ListControls = () => {
+const ListControls = memo(function ListControls() {
     const buttonsDict = useSetListControls()
 
     return (
@@ -26,6 +27,6 @@ const ListControls = () => {
             </ControlsMenu>
         </ControlsArticle>
     )
-}
+})
 
 export default ListControls
