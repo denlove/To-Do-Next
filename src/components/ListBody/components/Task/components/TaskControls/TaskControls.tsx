@@ -29,7 +29,7 @@ const TaskControls = memo(function TaskControls({
                 {dict.map(({ id, act, svg, variant }) => (
                     <Option key={id} $svgId={id}>
                         <Button variant={variant} onClick={act}>
-                            ({svg})
+                            {svg}
                         </Button>
                     </Option>
                 ))}

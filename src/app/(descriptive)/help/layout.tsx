@@ -5,6 +5,6 @@ export const metadata: Metadata = {
     title: 'To-Do | Help',
 }
 
-export default function AboutLayout({ children }: Readonly<IParamChildren>) {
+export default function HelpLayout({ children }: Readonly<IParamChildren>) {
     return <>{children}</>
 }

@@ -14,7 +14,7 @@ const ListControls = memo(function ListControls() {
                 {buttonsDict.map(({ id, act, svg, variant }) => (
                     <ListItem key={id}>
                         <Button onClick={act} variant={variant} text='Add task'>
-                            ({svg})
+                            {svg}
                         </Button>
                     </ListItem>
                 ))}

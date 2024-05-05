@@ -1,0 +1,12 @@
+.about-body {
+    margin-top: 4rem;
+    padding: 1rem;
+
+    & p {
+        font-size: var(--fs-20);
+        font-family: var(--ff-montserrat);
+        color: var(--color-0-0-30);
+        line-height: 2rem;
+        text-align: right;
+    }
+}

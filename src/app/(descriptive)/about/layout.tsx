@@ -5,6 +5,6 @@ export const metadata: Metadata = {
     title: 'To-Do | About us',
 }
 
-export default function AboutPage({ children }: Readonly<IParamChildren>) {
+export default function AboutLayout({ children }: Readonly<IParamChildren>) {
     return <>{children}</>
 }

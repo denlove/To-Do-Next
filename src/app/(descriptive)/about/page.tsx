@@ -1,3 +1,7 @@
-export default function AboutPage() {
-    return <h1>About</h1>
+import DescriptiveArea from '@/models/DescriptiveArea'
+
+const AboutPage = () => {
+    return <DescriptiveArea path='/about' />
 }
+
+export default AboutPage
