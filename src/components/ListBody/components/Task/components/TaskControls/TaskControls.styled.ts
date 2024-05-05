@@ -5,6 +5,10 @@ interface IButtonMenu {
     $isOpened: boolean
 }
 
+interface IOption {
+    $svgId: number | undefined
+}
+
 const DropdownButton = styled.aside`
     ${displayFlex({})};
     width: fit-content;
@@ -31,9 +35,20 @@ const ButtonMenu = styled.menu<IButtonMenu>`
     ${({ $isOpened }) => $isOpened && openMenuCss}
 `
 
-const Option = styled.li`
+const Option = styled.li<IOption>`
     width: fit-content;
     height: 100%;
+
+    & button:hover svg path {
+        ${({ $svgId }) =>
+            $svgId === 1
+                ? css`
+                      stroke: var(--light-green);
+                  `
+                : css`
+                      fill: var(--light-red);
+                  `}
+    }
 `
 
 const openMenuCss = css`

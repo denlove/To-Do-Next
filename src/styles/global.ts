@@ -17,6 +17,8 @@ const GlobalStyles = createGlobalStyle`
         --color-0-0-90: hsl(0, 0%, 90%);
         --color-240-50-90: hsl(240, 50%, 90%);
         --color-120-50-90: hsl(120, 50%, 90%);
+        --light-red: hsl(0, 50%, 75%);
+        --light-green: hsl(120, 50%, 75%);
         
         // custom checkbox
         --checkbox-border-color: var(--color-0-0-50);

@@ -21,7 +21,7 @@ const TaskList = styled.ul`
     ${mediaQuery(
         MOBILE,
         css`
-            padding: 0.5rem;
+            padding: 0.5rem 0.8rem;
         `,
     )}
 `

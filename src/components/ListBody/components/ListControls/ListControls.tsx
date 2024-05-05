@@ -1,10 +1,8 @@
 'use client'
 
 import { memo } from 'react'
-import Image from 'next/image'
 import { useSetListControls } from './hooks/useSetListControls'
 import Button from '@/ui/Button/Button'
-import PlusSvg from '../../../../../public/assets/plus.svg'
 import { ControlsArticle, ControlsMenu, ListItem } from './ListControls.styled'
 
 const ListControls = memo(function ListControls() {
@@ -13,14 +11,10 @@ const ListControls = memo(function ListControls() {
     return (
         <ControlsArticle>
             <ControlsMenu>
-                {buttonsDict.map(el => (
-                    <ListItem key={el.id}>
-                        <Button
-                            onClick={el.act}
-                            variant='primary'
-                            text='Add task'
-                        >
-                            <Image src={PlusSvg} alt='' />
+                {buttonsDict.map(({ id, act, svg, variant }) => (
+                    <ListItem key={id}>
+                        <Button onClick={act} variant={variant} text='Add task'>
+                            ({svg})
                         </Button>
                     </ListItem>
                 ))}

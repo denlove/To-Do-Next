@@ -2,6 +2,7 @@ import { addTask, taskSelector } from '@/redux/features/taskSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { RootState } from '@/redux/store'
 import { ITaskControls } from '@/types/interfaces'
+import PlusSvg from '../../../../../../public/assets/plus.svg'
 
 export const useSetListControls = (): Array<ITaskControls> => {
     const todos = useAppSelector((state: RootState) => state.taskManager.todos)
@@ -17,5 +18,5 @@ export const useSetListControls = (): Array<ITaskControls> => {
         }
     }
 
-    return [{ id: 1, act: handleAddTask, variant: 'primary' }]
+    return [{ id: 1, act: handleAddTask, variant: 'primary', svg: <PlusSvg /> }]
 }

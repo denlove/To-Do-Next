@@ -1,12 +1,11 @@
 import styled, { css } from 'styled-components'
 import { displayFlex } from '@/styles/templates'
-import { ButtonVariants } from '@/types/types'
+import { IButton } from '@/types/interfacesUI'
+import { AllKeyWith$Prefix, ButtonVariants } from '@/types/types'
 
-interface IStyledButton {
-    $variant: ButtonVariants
-}
+type PropsStyles = AllKeyWith$Prefix<Pick<IButton, 'variant'>>
 
-const StyledButton = styled.button<IStyledButton>`
+const StyledButton = styled.button<PropsStyles>`
     cursor: pointer;
     background-color: transparent;
 
@@ -29,7 +28,7 @@ const primaryCss = css`
     }
 `
 
-const imageLikeCss = css`
+const imageLikeCss = css<PropsStyles>`
     width: 31px;
     height: 31px;
     transition: all 0.2s ease-in;
