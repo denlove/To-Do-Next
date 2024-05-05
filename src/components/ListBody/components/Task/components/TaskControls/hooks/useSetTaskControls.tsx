@@ -31,13 +31,13 @@ export const useSetTaskControls = (id: string, toggleCheck: () => void) => {
                 id: 1,
                 act: toggleTask,
                 variant: 'image-like',
-                options: { bg: DoneSvg, alt: 'Task done button' },
+                svg: <DoneSvg />,
             },
             {
                 id: 2,
                 act: deleteTask,
                 variant: 'image-like',
-                options: { bg: MarkSvg, alt: 'Task delete button' },
+                svg: <MarkSvg />,
             },
         ] as Array<ITaskControls>,
     }

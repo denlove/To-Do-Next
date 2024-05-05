@@ -1,6 +1,5 @@
 import { memo } from 'react'
 import { useAnimate } from 'framer-motion'
-import Image from 'next/image'
 import Button from '@/ui/Button/Button'
 import BurgerSvg from '../../../../../public/assets/burger.svg'
 import { StyledBurger } from './Burger.styled'
@@ -31,7 +30,7 @@ const Burger = memo(function Burger({ onClick }: IBurger) {
                 }}
                 variant='image-like'
             >
-                <Image src={BurgerSvg} alt='Navigation menu' />
+                <BurgerSvg />
             </Button>
         </StyledBurger>
     )

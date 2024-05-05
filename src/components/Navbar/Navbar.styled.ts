@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { media, mediaQuery } from '@/styles/media'
+import { mediaQuery } from '@/styles/media'
 import { box, displayFlex } from '@/styles/templates'
 import { LARGE_MOBILE } from '@/utils/contents'
 

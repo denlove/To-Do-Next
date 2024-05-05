@@ -1,7 +1,6 @@
 'use client'
 
 import React, { memo } from 'react'
-import Image from 'next/image'
 import { useSetTaskControls } from './hooks/useSetTaskControls'
 import Button from '@/ui/Button/Button'
 import ExtraSvg from '../../../../../../../public/assets/extra_dots.svg'
@@ -24,16 +23,13 @@ const TaskControls = memo(function TaskControls({
     return (
         <DropdownButton>
             <Button variant='image-like' onClick={handleDropdown}>
-                <Image src={ExtraSvg} alt='Task options button' />
+                <ExtraSvg />
             </Button>
             <ButtonMenu $isOpened={isOpenMenu}>
-                {dict.map(el => (
-                    <Option key={el.id}>
-                        <Button variant={el.variant} onClick={el.act}>
-                            <Image
-                                src={el.options?.bg}
-                                alt={el.options?.alt as string}
-                            />
+                {dict.map(({ id, act, svg, variant }) => (
+                    <Option key={id} $svgId={id}>
+                        <Button variant={variant} onClick={act}>
+                            ({svg})
                         </Button>
                     </Option>
                 ))}
