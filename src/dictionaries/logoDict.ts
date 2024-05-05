@@ -1,7 +1,7 @@
 import { ILinkedImage } from '@/types/interfaces'
 import { DENLOVE_GITHUB_ROUTE, HOME_ROUTE } from '@/utils/routes'
-import DenloveLogo from '../../public/assets/denlove_logo.svg'
-import TodoLogo from '../../public/assets/todo_logo.svg'
+import DenloveLogo from '../../public/assets/denlove_logo.svg?url'
+import TodoLogo from '../../public/assets/todo_logo.svg?url'
 
 export const logoDict: Array<ILinkedImage> = [
     {

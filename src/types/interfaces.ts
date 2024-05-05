@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { IContent } from './interfacesBP'
 import { ButtonVariants } from './types'
 
@@ -23,10 +24,7 @@ export interface ITaskControls {
     id?: number
     act(): void
     variant: ButtonVariants
-    options?: {
-        bg: any
-        alt: string
-    }
+    svg: ReactNode
 }
 
 export interface TaskState {
