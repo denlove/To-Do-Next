@@ -1,0 +1,26 @@
+@use '../../styles/mixins';
+
+.headings {
+    @include mixins.displayFlex($fd: column, $gp: 0.5rem);
+    padding: 1rem;
+
+    & h1 {
+        font-size: var(--fs-48);
+        color: var(--color-0-0-15);
+        font-family: var(--ff-roboto-m);
+
+        @include mixins.mediaQuery(500px) {
+            font-size: var(--fs-40);
+        }
+    }
+
+    & p {
+        font-size: var(--fs-36);
+        color: var(--color-0-0-30);
+        font-family: var(--ff-roboto-m);
+
+        @include mixins.mediaQuery(500px) {
+            font-size: var(--fs-30);
+        }
+    }
+}
