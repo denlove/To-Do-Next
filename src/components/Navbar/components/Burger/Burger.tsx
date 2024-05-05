@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import { useAnimate } from 'framer-motion'
 import Image from 'next/image'
 import Button from '@/ui/Button/Button'
 import BurgerSvg from '../../../../../public/assets/burger.svg'
@@ -9,9 +10,27 @@ interface IBurger {
 }
 
 const Burger = memo(function Burger({ onClick }: IBurger) {
+    const [scope, animate] = useAnimate()
+
     return (
-        <StyledBurger>
-            <Button onClick={onClick} variant='image-like'>
+        <StyledBurger ref={scope}>
+            <Button
+                onClick={() => {
+                    onClick()
+                    animate(
+                        scope.current,
+                        { scale: [0.8, 1.01, 1], rotate: [5, 0] },
+                        {
+                            duration: 0.5,
+                            type: 'spring',
+                            damping: 5,
+                            ease: 'easeIn',
+                            stiffness: 50,
+                        },
+                    )
+                }}
+                variant='image-like'
+            >
                 <Image src={BurgerSvg} alt='Navigation menu' />
             </Button>
         </StyledBurger>
