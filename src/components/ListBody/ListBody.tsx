@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { removeAllEmptyContentTask } from '@/redux/features/taskSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { RootState } from '@/redux/store'
@@ -22,20 +23,22 @@ const ListBody = () => {
     return (
         <MainForm onSubmit={(e: React.FormEvent) => e.preventDefault()}>
             <TaskList>
-                {length ? (
-                    todos.map(el => {
-                        return (
-                            <Task
-                                key={el.id}
-                                id={el.id}
-                                content={el.content}
-                                isCheck={el.isCheck}
-                            />
-                        )
-                    })
-                ) : (
-                    <NoTasks />
-                )}
+                <AnimatePresence>
+                    {length ? (
+                        todos.map(el => {
+                            return (
+                                <Task
+                                    key={el.id}
+                                    id={el.id}
+                                    content={el.content}
+                                    isCheck={el.isCheck}
+                                />
+                            )
+                        })
+                    ) : (
+                        <NoTasks />
+                    )}
+                </AnimatePresence>
             </TaskList>
             <ListControls />
         </MainForm>

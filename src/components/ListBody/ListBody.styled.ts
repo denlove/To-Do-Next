@@ -15,6 +15,7 @@ const TaskList = styled.ul`
     border: var(--list-border);
     padding: 1rem 1.5rem;
     margin: 0 1rem;
+    overflow: hidden;
     ${displayFlex({ fw: 'wrap', gp: '0.5rem' })};
 
     ${mediaQuery(

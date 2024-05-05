@@ -1,6 +1,7 @@
 'use client'
 
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
+import { useAnimate, usePresence } from 'framer-motion'
 import { useHandleInputs } from './hooks/useHandleInputs'
 import { ITaskInfo } from '@/types/interfaces'
 import Input from '@/ui/Input/Input'
@@ -17,8 +18,27 @@ const Task = memo(function Task({ id, content, isCheck }: ITaskInfo) {
         editTaskText,
     } = useHandleInputs(id, isCheck, content)
 
+    const [isPresent, safeToRemove] = usePresence()
+    const [scope, animate] = useAnimate()
+
+    useEffect(() => {
+        if (isPresent) {
+            const enterAnimation = async () => {
+                await animate(scope.current, { opacity: 1, x: 0 })
+            }
+            enterAnimation()
+        } else {
+            const exitAnimation = async () => {
+                await animate(scope.current, { opacity: 0, x: -50 })
+                safeToRemove()
+            }
+
+            exitAnimation()
+        }
+    }, [isPresent])
+
     return (
-        <StyledTask $isCheck={isChecked}>
+        <StyledTask ref={scope} $isCheck={isChecked}>
             <StyledLable>
                 <Input
                     id={`check-${id}`}

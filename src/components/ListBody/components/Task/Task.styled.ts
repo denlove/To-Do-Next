@@ -12,6 +12,8 @@ const StyledTask = styled.li<IStyledTask>`
     overflow: hidden;
     user-select: none;
     transition: all 0.3s linear;
+    opacity: 0;
+    transform: translateX(3rem);
 
     ${({ $isCheck }) => $isCheck && endOfList}
 
