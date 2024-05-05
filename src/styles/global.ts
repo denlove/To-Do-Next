@@ -37,6 +37,9 @@ const GlobalStyles = createGlobalStyle`
         --fs-16: 1rem;
         --fs-18: 1.125rem;
         --fs-20: 1.25rem;
+        --fs-30: 1.875rem;
+        --fs-36: 2.25rem;
+        --fs-40: 2.5rem;
         --fs-48: 3rem;
 
         // borders
